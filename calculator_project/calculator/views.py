@@ -58,4 +58,4 @@ def calculate(request):
 
 
 
-    return render(request, 'calculator/home.html', {"result": result })
+    return render(request, 'calculator/home.html', {"result": round(result, 3) })
