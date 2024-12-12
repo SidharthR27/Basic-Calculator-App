@@ -23,7 +23,7 @@ def calculate(request):
             if not number is "":
                 numbers.append(float(number))
     except ValueError:
-        return render(request, "index.html", {"error": "Please enter only valid numbers."})
+        return render(request, "calculator/home.html", {"error": "Please enter only valid numbers."})
     
 
     # Perform the operation on the numbers
