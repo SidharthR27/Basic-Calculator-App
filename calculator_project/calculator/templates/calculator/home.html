@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator App</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'calculator/home.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="calculator-container">
+        <h1>Basic Calculator App</h1>
+        
+        <form action="/calculate/" method="POST">
+            {% csrf_token %}
+            <div class="input-group">
+                <label for="number1">Number 1:</label>
+                <input type="number" id="number1" name="number1" required>
+            </div>
+            <div class="input-group">
+                <label for="number2">Number 2:</label>
+                <input type="number" id="number2" name="number2" required>
+            </div>
+            <div class="input-group">
+                <label for="number3">Number 3:</label>
+                <input type="number" id="number3" name="number3">
+            </div>
+            <div class="input-group">
+                <label for="number4">Number 4:</label>
+                <input type="number" id="number4" name="number4">
+            </div>
+            <div class="input-group">
+                <label for="operation">Operation:</label>
+                <select id="operation" name="operation" required>
+                    <option value="add">Addition (+)</option>
+                    <option value="subtract">Subtraction (-)</option>
+                    <option value="multiply">Multiplication (x)</option>
+                    <option value="divide">Division (÷)</option>
+                </select>
+            </div>
+            <button type="submit" class="calculate-btn">Calculate</button>
+        </form>
+
+        <!-- To dynamically add final output  -->
+        {% if error %}
+        <div class="output error">{{ error }}</div>
+        {% endif %}
+        {% if result %}
+        <div class="output result">Result= {{ result }}</div>
+        {% endif %}
+
+    </div>
+
+
+</body>
+
+</html>
